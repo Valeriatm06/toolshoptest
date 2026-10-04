@@ -26,7 +26,7 @@ public class ToolshoptestApplication {
         //addToCart();
         //filterByPrice();
         filterByCategory();
-        //cckoutThreeProducts();
+        //checkoutThreeProducts();
 	}
 
 
@@ -37,6 +37,7 @@ public class ToolshoptestApplication {
 		driver.manage().window().maximize();
 		// 2. Darle hasta 10 segundos para encontrar cualquier elemento antes de dar error
 		driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
+		driver.get("https://practicesoftwaretesting.com/#/");
 		return driver;
 	}
 
@@ -52,9 +53,7 @@ public class ToolshoptestApplication {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         try {
-            driver.get("https://practicesoftwaretesting.com/#/");
-
-            // Navegar a la pantalla de Login
+            // Navegar a la pantalla de Login (driver ya está en la URL base)
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-test='nav-sign-in']"))).click();
 
             // Diligenciar campos de inicio de sesión
@@ -96,10 +95,7 @@ public class ToolshoptestApplication {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
         try {
-            // Navegar a la página principal del catálogo
-            driver.get("https://practicesoftwaretesting.com/#/");
-            
-            // Esperar la carga de tarjetas de productos
+            // Esperar la carga de tarjetas de productos (driver ya está en el catálogo principal)
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.card")));
             int productosIniciales = driver.findElements(By.cssSelector("a.card")).size();
             System.out.println("Cantidad de productos iniciales: " + productosIniciales);
@@ -133,7 +129,7 @@ public class ToolshoptestApplication {
             // Esperar actualización de la lista filtrada
             Thread.sleep(2000);
 
-            //Verificación de resultados tras el filtrado
+            // Verificación de resultados tras el filtrado
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a.card")));
             List<WebElement> productosFiltrados = driver.findElements(By.cssSelector("a.card"));
 
