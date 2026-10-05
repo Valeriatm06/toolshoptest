@@ -38,7 +38,7 @@
           "id": "cmd-04",
           "comment": "Arrastrar slider hacia la izquierda para reducir precio maximo",
           "command": "executeScript",
-          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 120, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 120, clientY: cy, bubbles: true }));",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 80, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 80, clientY: cy, bubbles: true }));",
           "targets": [],
           "value": ""
         },
@@ -52,29 +52,23 @@
         },
         {
           "id": "cmd-06",
-          "comment": "Obtener valor actual del precio maximo",
-          "command": "storeText",
+          "comment": "Verificar que el precio maximo cambio y ya no es 100",
+          "command": "assertNotText",
           "target": "css=.ngx-slider-model-high",
           "targets": [
             ["css=.ngx-slider-model-high", "css:finder"]
           ],
-          "value": "maxPrice"
+          "value": "100"
         },
         {
           "id": "cmd-07",
-          "comment": "Verificar que el precio se redujo respecto al inicial (100)",
-          "command": "executeScript",
-          "target": "return Number(arguments[0]) < 100;",
-          "targets": [],
-          "value": "esMenor"
-        },
-        {
-          "id": "cmd-08",
-          "comment": "Confirmar reduccion exitosa",
-          "command": "assert",
-          "target": "esMenor",
-          "targets": [],
-          "value": "true"
+          "comment": "Confirmar que hay productos desplegados en catalogo",
+          "command": "assertElementPresent",
+          "target": "css=[data-test='product-price']",
+          "targets": [
+            ["css=[data-test='product-price']", "css:finder"]
+          ],
+          "value": ""
         }
       ]
     },
@@ -112,7 +106,7 @@
           "id": "cmd-14",
           "comment": "Arrastrar slider hacia la derecha para incrementar precio minimo",
           "command": "executeScript",
-          "target": "const el = document.querySelector('.ngx-slider-pointer-min'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx + 100, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx + 100, clientY: cy, bubbles: true }));",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-min'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx + 80, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx + 80, clientY: cy, bubbles: true }));",
           "targets": [],
           "value": ""
         },
@@ -126,29 +120,23 @@
         },
         {
           "id": "cmd-16",
-          "comment": "Obtener valor actual del precio minimo",
-          "command": "storeText",
+          "comment": "Verificar que el precio minimo cambio y ya no es 1",
+          "command": "assertNotText",
           "target": "css=.ngx-slider-model-value",
           "targets": [
             ["css=.ngx-slider-model-value", "css:finder"]
           ],
-          "value": "minPrice"
+          "value": "1"
         },
         {
           "id": "cmd-17",
-          "comment": "Verificar que el precio minimo subio por encima de 1",
-          "command": "executeScript",
-          "target": "return Number(arguments[0]) > 1;",
-          "targets": [],
-          "value": "esMayor"
-        },
-        {
-          "id": "cmd-18",
-          "comment": "Confirmar aumento de precio minimo",
-          "command": "assert",
-          "target": "esMayor",
-          "targets": [],
-          "value": "true"
+          "comment": "Confirmar que hay productos filtrados",
+          "command": "assertElementPresent",
+          "target": "css=[data-test='product-price']",
+          "targets": [
+            ["css=[data-test='product-price']", "css:finder"]
+          ],
+          "value": ""
         }
       ]
     },
@@ -186,7 +174,7 @@
           "id": "cmd-24",
           "comment": "Arrastrar slider a la izquierda para reducir rango maximo",
           "command": "executeScript",
-          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 120, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 120, clientY: cy, bubbles: true }));",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 80, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 80, clientY: cy, bubbles: true }));",
           "targets": [],
           "value": ""
         },
@@ -390,7 +378,7 @@
           "id": "cmd-54",
           "comment": "Paso 1: Reducir maximo a la izquierda",
           "command": "executeScript",
-          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 120, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 120, clientY: cy, bubbles: true }));",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 80, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 80, clientY: cy, bubbles: true }));",
           "targets": [],
           "value": ""
         },
