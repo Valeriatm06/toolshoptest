@@ -1,0 +1,513 @@
+{
+  "id": "2b6b5536-e0e9-4e08-9df2-36423c4a2db6",
+  "version": "2.0",
+  "name": "Practice Software Testing - Filtro Precios",
+  "url": "https://practicesoftwaretesting.com",
+  "tests": [
+    {
+      "id": "18f7893a-861c-4b5c-b1f4-3d9200aa0001",
+      "name": "Reducir precio maximo en slider",
+      "commands": [
+        {
+          "id": "cmd-01",
+          "comment": "Abrir página principal",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-02",
+          "comment": "Ajustar tamaño de ventana",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-03",
+          "comment": "Esperar a que el deslizador máximo esté presente",
+          "command": "waitForElementVisible",
+          "target": "css=.ngx-slider-pointer-max",
+          "targets": [
+            ["css=.ngx-slider-pointer-max", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-04",
+          "comment": "Arrastrar slider hacia la izquierda para reducir precio maximo",
+          "command": "executeScript",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 120, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 120, clientY: cy, bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-05",
+          "comment": "Pausa para actualizar productos en catalogo",
+          "command": "pause",
+          "target": "1500",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-06",
+          "comment": "Obtener valor actual del precio maximo",
+          "command": "storeText",
+          "target": "css=.ngx-slider-model-high",
+          "targets": [
+            ["css=.ngx-slider-model-high", "css:finder"]
+          ],
+          "value": "maxPrice"
+        },
+        {
+          "id": "cmd-07",
+          "comment": "Verificar que el precio se redujo respecto al inicial (100)",
+          "command": "executeScript",
+          "target": "return Number(arguments[0]) < 100;",
+          "targets": [],
+          "value": "esMenor"
+        },
+        {
+          "id": "cmd-08",
+          "comment": "Confirmar reduccion exitosa",
+          "command": "assert",
+          "target": "esMenor",
+          "targets": [],
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "id": "18f7893a-861c-4b5c-b1f4-3d9200aa0002",
+      "name": "Aumentar precio minimo en slider",
+      "commands": [
+        {
+          "id": "cmd-11",
+          "comment": "Abrir página principal",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-12",
+          "comment": "Ajustar tamaño de ventana",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-13",
+          "comment": "Esperar al deslizador mínimo",
+          "command": "waitForElementVisible",
+          "target": "css=.ngx-slider-pointer-min",
+          "targets": [
+            ["css=.ngx-slider-pointer-min", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-14",
+          "comment": "Arrastrar slider hacia la derecha para incrementar precio minimo",
+          "command": "executeScript",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-min'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx + 100, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx + 100, clientY: cy, bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-15",
+          "comment": "Pausa para actualizar catálogo",
+          "command": "pause",
+          "target": "1500",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-16",
+          "comment": "Obtener valor actual del precio minimo",
+          "command": "storeText",
+          "target": "css=.ngx-slider-model-value",
+          "targets": [
+            ["css=.ngx-slider-model-value", "css:finder"]
+          ],
+          "value": "minPrice"
+        },
+        {
+          "id": "cmd-17",
+          "comment": "Verificar que el precio minimo subio por encima de 1",
+          "command": "executeScript",
+          "target": "return Number(arguments[0]) > 1;",
+          "targets": [],
+          "value": "esMayor"
+        },
+        {
+          "id": "cmd-18",
+          "comment": "Confirmar aumento de precio minimo",
+          "command": "assert",
+          "target": "esMayor",
+          "targets": [],
+          "value": "true"
+        }
+      ]
+    },
+    {
+      "id": "18f7893a-861c-4b5c-b1f4-3d9200aa0003",
+      "name": "Comprobar precio al abrir producto filtrado",
+      "commands": [
+        {
+          "id": "cmd-21",
+          "comment": "Abrir página principal",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-22",
+          "comment": "Ajustar ventana",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-23",
+          "comment": "Esperar slider maximo",
+          "command": "waitForElementVisible",
+          "target": "css=.ngx-slider-pointer-max",
+          "targets": [
+            ["css=.ngx-slider-pointer-max", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-24",
+          "comment": "Arrastrar slider a la izquierda para reducir rango maximo",
+          "command": "executeScript",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 120, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 120, clientY: cy, bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-25",
+          "comment": "Pausa para refresco del catalogo filtrado",
+          "command": "pause",
+          "target": "1500",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-26",
+          "comment": "Esperar y dar clic al producto filtrado Combination Pliers",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-27",
+          "comment": "Abrir detalle del producto",
+          "command": "click",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "cmd-28",
+          "comment": "Esperar al precio unitario del producto en detalle",
+          "command": "waitForElementVisible",
+          "target": "css=[data-test=\"unit-price\"]",
+          "targets": [
+            ["css=[data-test=\"unit-price\"]", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-29",
+          "comment": "Validar que el precio coincide con el catalogo filtrado ($14.15)",
+          "command": "assertText",
+          "target": "css=[data-test=\"unit-price\"]",
+          "targets": [
+            ["css=[data-test=\"unit-price\"]", "css:finder"]
+          ],
+          "value": "14.15"
+        }
+      ]
+    },
+    {
+      "id": "18f7893a-861c-4b5c-b1f4-3d9200aa0004",
+      "name": "Filtrar por precio y ordenar de Menor a Mayor",
+      "commands": [
+        {
+          "id": "cmd-31",
+          "comment": "Abrir página principal",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-32",
+          "comment": "Ajustar ventana",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-33",
+          "comment": "Esperar slider maximo",
+          "command": "waitForElementVisible",
+          "target": "css=.ngx-slider-pointer-max",
+          "targets": [
+            ["css=.ngx-slider-pointer-max", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-34",
+          "comment": "Reducir precio maximo",
+          "command": "executeScript",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 80, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 80, clientY: cy, bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-35",
+          "comment": "Pausa para reflejar cambio en el catalogo",
+          "command": "pause",
+          "target": "1500",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-36",
+          "comment": "Esperar selector de ordenamiento",
+          "command": "waitForElementVisible",
+          "target": "css=[data-test=\"sort\"]",
+          "targets": [
+            ["css=[data-test=\"sort\"]", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-37",
+          "comment": "Seleccionar ordenamiento: Precio (Bajo - Alto)",
+          "command": "select",
+          "target": "css=[data-test=\"sort\"]",
+          "targets": [
+            ["css=[data-test=\"sort\"]", "css:finder"]
+          ],
+          "value": "value=price,asc"
+        },
+        {
+          "id": "cmd-38",
+          "comment": "Pausa para ordenar la lista",
+          "command": "pause",
+          "target": "1500",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-39",
+          "comment": "Abrir el primer producto ordenado (Combination Pliers)",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-40",
+          "comment": "Clic en producto",
+          "command": "click",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "cmd-41",
+          "comment": "Esperar precio unitario en detalle",
+          "command": "waitForElementVisible",
+          "target": "css=[data-test=\"unit-price\"]",
+          "targets": [
+            ["css=[data-test=\"unit-price\"]", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-42",
+          "comment": "Validar precio unitario ($14.15)",
+          "command": "assertText",
+          "target": "css=[data-test=\"unit-price\"]",
+          "targets": [
+            ["css=[data-test=\"unit-price\"]", "css:finder"]
+          ],
+          "value": "14.15"
+        }
+      ]
+    },
+    {
+      "id": "18f7893a-861c-4b5c-b1f4-3d9200aa0005",
+      "name": "Restablecer filtro de precio a valores iniciales",
+      "commands": [
+        {
+          "id": "cmd-51",
+          "comment": "Abrir página principal",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-52",
+          "comment": "Ajustar ventana",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-53",
+          "comment": "Esperar slider maximo",
+          "command": "waitForElementVisible",
+          "target": "css=.ngx-slider-pointer-max",
+          "targets": [
+            ["css=.ngx-slider-pointer-max", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-54",
+          "comment": "Paso 1: Reducir maximo a la izquierda",
+          "command": "executeScript",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: cx - 120, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: cx - 120, clientY: cy, bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-55",
+          "comment": "Pausa breve",
+          "command": "pause",
+          "target": "1000",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-56",
+          "comment": "Paso 2: Restablecer arrastrando con precision al 50% de la barra (valor 100)",
+          "command": "executeScript",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; const slider = document.querySelector('.ngx-slider'); const sRect = slider.getBoundingClientRect(); const targetX = sRect.left + (sRect.width * 0.5); el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: targetX, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: targetX, clientY: cy, bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-57",
+          "comment": "Pausa para estabilizar valor",
+          "command": "pause",
+          "target": "1500",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-58",
+          "comment": "Validar que el precio maximo regreso a su valor inicial de 100",
+          "command": "assertText",
+          "target": "css=.ngx-slider-model-high",
+          "targets": [
+            ["css=.ngx-slider-model-high", "css:finder"]
+          ],
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "id": "18f7893a-861c-4b5c-b1f4-3d9200aa0006",
+      "name": "Poner slider al precio maximo (200)",
+      "commands": [
+        {
+          "id": "cmd-61",
+          "comment": "Abrir página principal",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-62",
+          "comment": "Ajustar ventana",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-63",
+          "comment": "Esperar slider maximo",
+          "command": "waitForElementVisible",
+          "target": "css=.ngx-slider-pointer-max",
+          "targets": [
+            ["css=.ngx-slider-pointer-max", "css:finder"]
+          ],
+          "value": "10000"
+        },
+        {
+          "id": "cmd-64",
+          "comment": "Arrastrar slider hacia la derecha total hasta el tope maximo (200)",
+          "command": "executeScript",
+          "target": "const el = document.querySelector('.ngx-slider-pointer-max'); const rect = el.getBoundingClientRect(); const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2; const slider = document.querySelector('.ngx-slider'); const sRect = slider.getBoundingClientRect(); const targetX = sRect.right + 20; el.dispatchEvent(new MouseEvent('mousedown', { clientX: cx, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mousemove', { clientX: targetX, clientY: cy, bubbles: true })); document.dispatchEvent(new MouseEvent('mouseup', { clientX: targetX, clientY: cy, bubbles: true }));",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-65",
+          "comment": "Pausa para registrar el nuevo valor maximo",
+          "command": "pause",
+          "target": "1500",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "cmd-66",
+          "comment": "Validar que el precio maximo alcanza el techo de 200",
+          "command": "assertText",
+          "target": "css=.ngx-slider-model-high",
+          "targets": [
+            ["css=.ngx-slider-model-high", "css:finder"]
+          ],
+          "value": "200"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "9d901844-4860-4960-91a9-b36c4b221001",
+      "name": "Filtro por Rango de Precios",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "18f7893a-861c-4b5c-b1f4-3d9200aa0001",
+        "18f7893a-861c-4b5c-b1f4-3d9200aa0002",
+        "18f7893a-861c-4b5c-b1f4-3d9200aa0003",
+        "18f7893a-861c-4b5c-b1f4-3d9200aa0004",
+        "18f7893a-861c-4b5c-b1f4-3d9200aa0005",
+        "18f7893a-861c-4b5c-b1f4-3d9200aa0006"
+      ]
+    }
+  ],
+  "urls": [
+    "https://practicesoftwaretesting.com"
+  ],
+  "plugins": []
+}

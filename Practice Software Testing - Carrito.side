@@ -1,0 +1,553 @@
+{
+  "id": "e4f8d9b1-7a2c-4e89-b5f3-c12e87903d41",
+  "version": "2.0",
+  "name": "Practice Software Testing - Carrito",
+  "url": "https://practicesoftwaretesting.com",
+  "tests": [
+    {
+      "id": "c1a01b22-83de-4f76-bc34-918237462101",
+      "name": "TC01 - Añadir 1 producto al carrito (Happy Path)",
+      "commands": [
+        {
+          "id": "11111111-aaaa-4000-8000-000000000001",
+          "comment": "",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000002",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000003",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000004",
+          "comment": "",
+          "command": "click",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"],
+            ["xpath=//img[@alt='Combination Pliers']", "xpath:img"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000005",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=btn-add-to-cart",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000006",
+          "comment": "",
+          "command": "click",
+          "target": "id=btn-add-to-cart",
+          "targets": [
+            ["id=btn-add-to-cart", "id"],
+            ["css=[data-test='add-to-cart']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000007",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000008",
+          "comment": "",
+          "command": "assertText",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": "1"
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000009",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-test='nav-cart']",
+          "targets": [
+            ["css=[data-test='nav-cart']", "css:finder"],
+            ["xpath=//a[contains(@href, '#/checkout')]", "xpath:href"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000010",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=.table",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "11111111-aaaa-4000-8000-000000000011",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=tbody tr",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "c1a01b22-83de-4f76-bc34-918237462102",
+      "name": "TC02 - Añadir múltiples unidades del mismo producto",
+      "commands": [
+        {
+          "id": "22222222-bbbb-4000-8000-000000000001",
+          "comment": "",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000002",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000003",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000004",
+          "comment": "",
+          "command": "click",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000005",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-test='quantity']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000006",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-test='quantity']",
+          "targets": [
+            ["css=[data-test='quantity']", "css:finder"],
+            ["id=quantity-input", "id"]
+          ],
+          "value": "3"
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000007",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=btn-add-to-cart",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000008",
+          "comment": "",
+          "command": "click",
+          "target": "id=btn-add-to-cart",
+          "targets": [
+            ["id=btn-add-to-cart", "id"],
+            ["css=[data-test='add-to-cart']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000009",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000010",
+          "comment": "",
+          "command": "assertText",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": "3"
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000011",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-test='nav-cart']",
+          "targets": [
+            ["css=[data-test='nav-cart']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000012",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=.table",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "22222222-bbbb-4000-8000-000000000013",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=tbody tr",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "c1a01b22-83de-4f76-bc34-918237462103",
+      "name": "TC03 - Añadir dos productos diferentes (Acumulación)",
+      "commands": [
+        {
+          "id": "33333333-cccc-4000-8000-000000000001",
+          "comment": "",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000002",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000003",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000004",
+          "comment": "",
+          "command": "click",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000005",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=btn-add-to-cart",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000006",
+          "comment": "",
+          "command": "click",
+          "target": "id=btn-add-to-cart",
+          "targets": [
+            ["id=btn-add-to-cart", "id"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000007",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000008",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-test='nav-home']",
+          "targets": [
+            ["css=[data-test='nav-home']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000009",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Bolt Cutters']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000010",
+          "comment": "",
+          "command": "click",
+          "target": "css=img[alt='Bolt Cutters']",
+          "targets": [
+            ["css=img[alt='Bolt Cutters']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000011",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=btn-add-to-cart",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000012",
+          "comment": "",
+          "command": "click",
+          "target": "id=btn-add-to-cart",
+          "targets": [
+            ["id=btn-add-to-cart", "id"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000013",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000014",
+          "comment": "",
+          "command": "assertText",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": "2"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000015",
+          "comment": "",
+          "command": "click",
+          "target": "css=[data-test='nav-cart']",
+          "targets": [
+            ["css=[data-test='nav-cart']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000016",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=.table",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "33333333-cccc-4000-8000-000000000017",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=tbody tr:nth-child(2)",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "c1a01b22-83de-4f76-bc34-918237462104",
+      "name": "TC04 - Intento de añadir producto agotado (Out of Stock)",
+      "commands": [
+        {
+          "id": "44444444-dddd-4000-8000-000000000001",
+          "comment": "",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "44444444-dddd-4000-8000-000000000002",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "44444444-dddd-4000-8000-000000000003",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Long Nose Pliers']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "44444444-dddd-4000-8000-000000000004",
+          "comment": "",
+          "command": "click",
+          "target": "css=img[alt='Long Nose Pliers']",
+          "targets": [
+            ["css=img[alt='Long Nose Pliers']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "44444444-dddd-4000-8000-000000000005",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=h1",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "44444444-dddd-4000-8000-000000000006",
+          "comment": "",
+          "command": "assertElementPresent",
+          "target": "css=#btn-add-to-cart[disabled]",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "44444444-dddd-4000-8000-000000000007",
+          "comment": "",
+          "command": "assertElementNotPresent",
+          "target": "id=lblCartCount",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "c1a01b22-83de-4f76-bc34-918237462105",
+      "name": "TC05 - Validación valor límite inferior cantidad (0)",
+      "commands": [
+        {
+          "id": "55555555-eeee-4000-8000-000000000001",
+          "comment": "",
+          "command": "open",
+          "target": "/#/",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000002",
+          "comment": "",
+          "command": "setWindowSize",
+          "target": "1500x900",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000003",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000004",
+          "comment": "",
+          "command": "click",
+          "target": "css=img[alt='Combination Pliers']",
+          "targets": [
+            ["css=img[alt='Combination Pliers']", "css:finder"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000005",
+          "comment": "",
+          "command": "waitForElementVisible",
+          "target": "css=[data-test='quantity']",
+          "targets": [],
+          "value": "10000"
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000006",
+          "comment": "",
+          "command": "type",
+          "target": "css=[data-test='quantity']",
+          "targets": [
+            ["css=[data-test='quantity']", "css:finder"]
+          ],
+          "value": "0"
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000007",
+          "comment": "",
+          "command": "click",
+          "target": "id=btn-add-to-cart",
+          "targets": [
+            ["id=btn-add-to-cart", "id"]
+          ],
+          "value": ""
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000008",
+          "comment": "",
+          "command": "executeScript",
+          "target": "return document.querySelector('[data-test=\"quantity\"]').validity.valid;",
+          "targets": [],
+          "value": "esValido"
+        },
+        {
+          "id": "55555555-eeee-4000-8000-000000000009",
+          "comment": "",
+          "command": "assert",
+          "target": "esValido",
+          "targets": [],
+          "value": "false"
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "99999999-ffff-4000-8000-000000000001",
+      "name": "Suite Carrito de Compras",
+      "persistSession": false,
+      "parallel": false,
+      "timeout": 300,
+      "tests": [
+        "c1a01b22-83de-4f76-bc34-918237462101",
+        "c1a01b22-83de-4f76-bc34-918237462102",
+        "c1a01b22-83de-4f76-bc34-918237462103",
+        "c1a01b22-83de-4f76-bc34-918237462104",
+        "c1a01b22-83de-4f76-bc34-918237462105"
+      ]
+    }
+  ],
+  "urls": [
+    "https://practicesoftwaretesting.com/"
+  ],
+  "plugins": []
+}
